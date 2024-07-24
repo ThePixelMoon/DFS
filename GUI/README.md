@@ -205,3 +205,8 @@ now start whatever you want for example we can start minesweeper
 ./mwmine
 ```
 you have a functional GUI Linux distro congrats
+you can run your app
+```
+cd nanox/
+./<YOUR APP NAME>
+```

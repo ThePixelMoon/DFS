@@ -1,4 +1,4 @@
-# DFS
+# DFS (CLI)
 This project allows you to build a linux distro from scratch 
 ## What do we do?
 we need some dependencies so install these

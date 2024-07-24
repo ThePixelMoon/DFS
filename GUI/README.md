@@ -152,6 +152,9 @@ cp runapp /distro/nanox
 ```
 now we are finished with setting up the WM the final set is to set up the bootloader
 ## Chapter 3 Bootloader
+```
+cd /distro
+```
 use the truncate command to pass in the boot image
 ```
 truncate -s 200MB boot.img

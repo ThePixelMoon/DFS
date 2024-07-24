@@ -19,7 +19,7 @@ tar xf linux-6.10.tar.xz
 ```
 now go to the kernels foldder and make a menuconfig
 ```
-cd linux-6.10.tar.xz
+cd linux-6.10
 make menuconfig
 ```
 now select `Device Drivers > Graphic support > Cirrus drivers` enable it then enable `Frame buffer devices > support for frame buffer devices` go back to graphic support and select `bootup logo`

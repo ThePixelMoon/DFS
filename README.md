@@ -127,3 +127,7 @@ syslinux will boot up and will ask what file to boot use
 ```
 /bzImage -initrd=init.cpio
 ```
+
+Links
+[`DFS GUI`](https://github.com/GuestSneezeOSDev/DFS/tree/main/GUI)
+[`DFS For Embedded Devices`](https://github.com/GuestSneezeOSDev/DFS/tree/main/embedded)

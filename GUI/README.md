@@ -148,6 +148,7 @@ now run those copy commands now copy the biniaries by copying the whole folder
 ```
 cd ..
 cp -r bin /distro/nanox
+cd ..
 cp runapp /distro/nanox
 ```
 now we are finished with setting up the WM the final set is to set up the bootloader

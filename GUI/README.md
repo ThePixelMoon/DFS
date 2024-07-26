@@ -23,7 +23,7 @@ cd linux-6.10
 make menuconfig
 ```
 now select `Device Drivers > Graphic support > Cirrus drivers` enable it then enable `Frame buffer devices > support for frame buffer devices` go back to graphic support and select `bootup logo`
-then enable mouseedev search with `/`  and select 1 then enable `mouse interface` then exit and save
+then enable mouseedev search with `/`  and select 1 then enable `mousedev` then exit and save
 then run `make -j <amount of cores you hvae>` this allows you to make and compile it like for example
 ```
 make -j 8

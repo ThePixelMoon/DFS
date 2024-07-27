@@ -189,6 +189,11 @@ now unmount
 unmount mnt
 ls
 ```
+then copy the `boot.img` to ~/
+```
+cd ~/
+cp distro/boot.img ~/
+```
 now the boot.img is ready now boot this with QEMU
 ```
 qemu-system-x86_64 boot.img -vga cirrus

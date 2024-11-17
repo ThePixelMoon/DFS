@@ -7,6 +7,7 @@ This project allows you to create **your own** distro of *[Linux](https://www.li
 3. [Editing](#editing)
 4. [Building](#building)
 5. [bZimage](#bzimage)
+6. [BusyBox](#busybox)
 
 ## Dependencies
 In order to start, make sure you have any *[Linux](https://www.linux.org/)* distro installed. Then, in the *terminal*, type this command:

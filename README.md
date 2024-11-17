@@ -1,28 +1,48 @@
-# DFS (CLI)
-This project allows you to build a linux distro from scratch 
-## What do we do?
-we need some dependencies so install these
+# Distro-From-Scratch (Second Edition)
+This project allows you to create **your own** distro of *[Linux](https://www.linux.org/)*.
+
+## Parts
+1. [Dependencies](#dependencies)
+2. [Cloning](#cloning)
+3. [Editing](#editing)
+4. [Building](#building)
+
+## Dependencies
+In order to start, make sure you have any *[Linux](https://www.linux.org/)* distro installed. Then, in the terminal, type this command:
 ```
 sudo apt get install bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools
 ```
-now we need to clone the Linux Kernel and edit it
+
+### Explanation
+`sudo` - requires administrator permission
+
+`apt get` - package manager
+
+`install` - pretty self-explanatory
+
+
+## Cloning
+Now, *we* have to clone the Linux source code. To do it, write this command in your terminal:
 ```
 git clone --depth 1 https://github.com/torvalds/linux.git
 ```
-now Change to the `Linux` directory
-```
-cd linux
-```
-now we need to edit the kernel by editing the options this will open an interactive menu
+After that, go to the *`linux`* directory by writing in `cd linux`.
+
+## Editing
+Now, *we* have to edit the **kernel** by editing the **options**. Type this in your terminal:
 ```
 make menuconfig
 ```
-make sure `64 bit kernel (NEW)` is selected
 
-then after making the `menuconfig`if you have any more cores than 6 than you can make it more than 6 such as i have 8 Cores
-```
-make -j 8
-```
+### Explanation
+This command (`make menuconfig`) opens a *interactive menu* to edit the options. **MAKE SURE `64 bit kernel (NEW)` IS SELECTED!!**
+
+## Building
+
+After doing the `menuconfig`, if you have more than *6 cores* on your *CPU* you can make it build with more than *6 cores* by writing this command in your terminal.
+
+`make -j (AMOUNT OF CPU CORES YOU HAVE AS A INTEGER)`
+
 After the kenel finished compiling (GENTOO MOMENT) you will see a message with `bZimage`, make a directory named `boot-files`
 ```
 mkdir /boot-files

@@ -6,9 +6,10 @@ This project allows you to create **your own** distro of *[Linux](https://www.li
 2. [Cloning](#cloning)
 3. [Editing](#editing)
 4. [Building](#building)
+5. [bZimage](#bzimage)
 
 ## Dependencies
-In order to start, make sure you have any *[Linux](https://www.linux.org/)* distro installed. Then, in the terminal, type this command:
+In order to start, make sure you have any *[Linux](https://www.linux.org/)* distro installed. Then, in the *terminal*, type this command:
 ```
 sudo apt get install bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools
 ```
@@ -22,14 +23,14 @@ sudo apt get install bzip2 git vim make gcc libncurses-dev flex bison bc cpio li
 
 
 ## Cloning
-Now, *we* have to clone the Linux source code. To do it, write this command in your terminal:
+Now, *we* have to clone the Linux source code. To do it, write this command in your *terminal*:
 ```
 git clone --depth 1 https://github.com/torvalds/linux.git
 ```
 After that, go to the *`linux`* directory by writing in `cd linux`.
 
 ## Editing
-Now, *we* have to edit the **kernel** by editing the **options**. Type this in your terminal:
+Now, *we* have to edit the **kernel** by editing the **options**. Type this in your *terminal*:
 ```
 make menuconfig
 ```
@@ -39,35 +40,37 @@ This command (`make menuconfig`) opens a *interactive menu* to edit the options.
 
 ## Building
 
-After doing the `menuconfig`, if you have more than *6 cores* on your *CPU* you can make it build with more than *6 cores* by writing this command in your terminal.
+After doing the `menuconfig`, if you have more than *6 cores* on your *CPU* you can make it build with more than *6 cores* by writing this command in your *terminal*.
 
-`make -j (AMOUNT OF CPU CORES YOU HAVE AS A INTEGER)`
+*`make -j (AMOUNT OF CPU CORES YOU HAVE AS A INTEGER)`*
 
-After the kenel finished compiling (GENTOO MOMENT) you will see a message with `bZimage`, make a directory named `boot-files`
-```
-mkdir /boot-files
-```
-then copy the `bZimage` to the `boot-files` directory
-```
-cp arch/x86/boot/bzImage /boot-files
-```
-`bzImage` is a file for booting the system
-cd back
-```
-cd ..
-```
-now clone busybox
-```
-git clone --depth 1 https://git.busybox.net/busybox
-```
-then enter `busybox` directory
-```
-cd busybox
-```
-then make the `menuconfig`
-```
-make menuconfig
-```
+## bZimage
+
+After the *kernel* finished compiling, you'll see a message about *`bZimage`*. You should create a directory called `boot-files`. Type this in your *terminal*:
+
+`mkdir /boot-files`
+
+After you created the directory, copy the *`bZimage`* directory into the *`boot-files`* directory. Enter this command in your *terminal* in order to do that:
+
+`cp arch/x86/boot/bzImage /boot-files`
+
+After you did it, go one directory back with this command:
+
+`cd ..`
+
+## BusyBox
+> BusyBox: The Swiss Army Knife of Embedded Linux
+
+After you've done all that, you should clone BusyBox. Do it with this command:
+
+`git clone --depth 1 https://git.busybox.net/busybox`
+
+..and then enter the *`busybox`* directory with: `cd busybox`
+
+----
+
+When you are in the *BusyBox* directory, do *`menuconfig`* again. (`make menuconfig` in case you forgot)
+
 go to `settings > Build static binary (no shared libs) (NEW)` select it now save, the reason we made `static` build is because we do not want external binaries now with the amount of cores you have run `make -j <cores>` like for example
 ```
 make -j 8

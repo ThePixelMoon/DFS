@@ -3,12 +3,21 @@ This project allows you to create **your own** distribution of *[Linux](https://
 
 ### Contents
 1. [Dependencies](#dependencies)
+
+    1.1. Explanation
+
 2. [Cloning](#cloning)
 3. [Editing](#editing)
+
+    3.1. Explanation
+
 4. [Building](#building)
 5. [bZimage](#bzimage)
 6. [BusyBox](#busybox)
 7. [Initramfs](#initramfs)
+
+    7.1. Explanation
+
 8. [Bootfile](#bootfile)
 9. [Booting](#booting)
 

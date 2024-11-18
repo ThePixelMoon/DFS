@@ -1,14 +1,17 @@
-# How to make a DFS GUI OS (Lightweight 600 MB)
-# Chapter 1 Building the GUI and Kernel
-To make a simple user-friendly graphical linux distro  we will use a couple of components and out them together
-we will use the 6.10 kernel but we need wget
-```
-apt install wget
-```
-now use wget to get the kernel
-```
-wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz
-```
+# Distro-From-Scratch : GUI
+If **you** didn't read the *CLI* version of *DFS*, make **sure** to read it. Otherwise, you wouldn't *understand* *half* of the *stuff*.
+
+### Contents
+1. [Building](#building)
+
+## Building
+
+To create a *simple user-friendly graphical [Linux](https://www.linux.org/) distribution*, we will use a *couple* of *components*.
+
+*We* will just *use* the **6.10** kernel, but we need *`wget`*. (*`apt install wget`*)
+
+Now use *`wget`* to get the *kernel*. (*`wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz`*)
+
 now we need a few dependencies to compile the kernel
 ```
 apt install bzip2 libncurses-dev flex bison bc libelf-dev libssl-dev xz-utils autoconf gcc make libtool git vim libpng-dev libfreetype-dev g++ extlinux

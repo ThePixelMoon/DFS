@@ -1,5 +1,5 @@
 # Distro-From-Scratch (Second Edition)
-This project allows you to create **your own** distro of *[Linux](https://www.linux.org/)*.
+This project allows you to create **your own** distribution of *[Linux](https://www.linux.org/)*.
 
 ### Contents
 1. [Dependencies](#dependencies)
@@ -11,7 +11,7 @@ This project allows you to create **your own** distro of *[Linux](https://www.li
 7. [Initramfs](#initramfs)
 
 ## Dependencies
-In order to start, make sure you have any *[Linux](https://www.linux.org/)* distro installed. Then, in the *terminal*, type this command:
+In order to start, make sure you have any *[Linux](https://www.linux.org/)* distribution installed. Then, in the *terminal*, type this command:
 ```
 sudo apt get install bzip2 git make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools
 ```

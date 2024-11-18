@@ -1,18 +1,19 @@
 # Distro-From-Scratch (Second Edition)
 This project allows you to create **your own** distro of *[Linux](https://www.linux.org/)*.
 
-## Parts
+### Contents
 1. [Dependencies](#dependencies)
 2. [Cloning](#cloning)
 3. [Editing](#editing)
 4. [Building](#building)
 5. [bZimage](#bzimage)
 6. [BusyBox](#busybox)
+7. [Initramfs](#initramfs)
 
 ## Dependencies
 In order to start, make sure you have any *[Linux](https://www.linux.org/)* distro installed. Then, in the *terminal*, type this command:
 ```
-sudo apt get install bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools
+sudo apt get install bzip2 git make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools
 ```
 
 ### Explanation
@@ -37,7 +38,7 @@ make menuconfig
 ```
 
 ### Explanation
-This command (`make menuconfig`) opens a *interactive menu* to edit the options. **MAKE SURE `64 bit kernel (NEW)` IS SELECTED!!**
+This command (*`make menuconfig`*) opens a *interactive menu* to edit the options. **MAKE SURE `64 bit kernel (NEW)` IS SELECTED!!**
 
 ## Building
 
@@ -70,29 +71,28 @@ After you've done all that, you should clone BusyBox. Do it with this command:
 
 ----
 
-When you are in the *BusyBox* directory, do *`menuconfig`* again. (`make menuconfig` in case you forgot)
+When you are in the *BusyBox* directory, do *`menuconfig`* again. (*`make menuconfig`*, in case you forgot)
 
-go to `settings > Build static binary (no shared libs) (NEW)` select it now save, the reason we made `static` build is because we do not want external binaries now with the amount of cores you have run `make -j <cores>` like for example
-```
-make -j 8
-```
-after busybox finished compiling make an `initramds`
-```
-mkdir /boot-files/initramfs
-```
-now run 
-```
-make CONFIG_PREFIX=/boot-files/initramfs install
-```
-initramfs is the initial file system the kernel loads after booting we will put busybox over there
-now move to that folder
-```
-cd /boot-files/initramfs/
-```
-now create a file called `init`
-```
-nano init
-```
+After that, you should be in the *interactive menu*. Go to *`Settings > Build Static Binary (no shared libs) (NEW)`*, select it and save.
+
+The reason *we* picked *`static`* is because *we* do **not** want external binaries.
+
+After *you* did all that, type in: *`make -j (AMOUNT OF CPU CORES YOU HAVE AS A INTEGER)`*, the same thing we did when building the kernel.
+
+## Initramfs
+
+After *BusyBox* finished compiling, make a *directory* called *`Initramfs`* in *boot-files*. (*`mkdir /boot-files/initramfs`*)
+
+After *you've* created the directory, run this command:
+
+`make CONFIG_PREFIX=/boot-files/initramfs install`
+
+### Explanation
+
+**Initramfs** is the *initial file-system* the kernel loads after booting. We will move *BusyBox* over there.
+
+Now move to the *`initramfs`* directory (*`cd /boot-files/initramfs/`*), *and* create a new *file* called *`init`*. (*`nano init`*)
+
 now add these commands to `init`
 ```
 #!/bin/sh

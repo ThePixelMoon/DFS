@@ -136,15 +136,18 @@ After you created the *`m`* directory, copy the *kernel* and *initramfs* to the 
 
 Then, *unmount* it. (*`unmount m`*)
 
-now the boot image is ready so we will boot it up
-```
-qemu-system-x86_64 boot
-```
-syslinux will boot up and will ask what file to boot use 
-```
-/bzImage -initrd=init.cpio
-```
+## Booting
+
+Now, the *boot image* is ready, so *we* will boot it up. (*`qemu-system-x86_64 boot`*)
+
+After you wrote the command, *`syslinux`* will boot up and ask which *bootfile* to use. (*`/bzImage -initrd=init.cpio`*)
+
+**Thanks for reading!**
+
+----
 
 Links
+
 [`DFS GUI`](https://github.com/GuestSneezeOSDev/DFS/tree/main/GUI)
+
 [`DFS For Embedded Devices`](https://github.com/GuestSneezeOSDev/DFS/tree/main/embedded)

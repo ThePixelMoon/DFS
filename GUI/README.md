@@ -60,10 +60,8 @@ Navigate to the `microwindows` directory. (*`cd microwindows/`*)
 
 Then, navigate to the `src/` directory. (*`cd src/`*)
 
-we will build it with the Linux Hardware buffer config
-```
-cp Configs/config.linux-fb config
-```
+We will build it with the *Linux Hardware buffer configuration*. (*`cp Configs/config.linux-fb config`*)
+
 we will change somethng in the configuration which will be needed afterwards nano the config and search for NX 11
 ```
 nano config

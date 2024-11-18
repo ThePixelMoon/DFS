@@ -10,6 +10,7 @@ This project allows you to create **your own** distribution of *[Linux](https://
 6. [BusyBox](#busybox)
 7. [Initramfs](#initramfs)
 8. [Bootfile](#bootfile)
+9. [Booting](#booting)
 
 ## Dependencies
 In order to start, make sure you have any *[Linux](https://www.linux.org/)* distribution (preferably [Debian](https://www.debian.org/)) installed. Then, in the *terminal*, type this command:

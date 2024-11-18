@@ -2,7 +2,18 @@
 If **you** didn't read the *CLI* version of *DFS*, make **sure** to read it. Otherwise, you wouldn't *understand* *half* of the *stuff*.
 
 ### Contents
-1. [Building](#building)
+1. [Dependencies](#dependencies)
+2. [Building](#building)
+
+    2.1 [Extracting](#extracting)
+    
+    2.2 [Menuconfig](#menuconfig)
+
+## Dependencies
+*We* need *dependencies* first. Assuming you have [Debian](https://www.debian.org/), type this in your terminal:
+```
+apt install bzip2 libncurses-dev flex bison bc libelf-dev libssl-dev xz-utils autoconf gcc make libtool git libpng-dev libfreetype-dev g++ extlinux
+```
 
 ## Building
 
@@ -12,14 +23,12 @@ To create a *simple user-friendly graphical [Linux](https://www.linux.org/) dist
 
 Now use *`wget`* to get the *kernel*. (*`wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz`*)
 
-now we need a few dependencies to compile the kernel
-```
-apt install bzip2 libncurses-dev flex bison bc libelf-dev libssl-dev xz-utils autoconf gcc make libtool git vim libpng-dev libfreetype-dev g++ extlinux
-```
-now we need to extract the kernel
-```
-tar xf linux-6.10.tar.xz
-```
+### Extracting
+
+Now, we need to extract the kernel, because it's a *`.tar.xz`* archive. (*`tar xf linux-6.10.tar.xz`*)
+
+### Menuconfig
+
 now go to the kernels foldder and make a menuconfig
 ```
 cd linux-6.10

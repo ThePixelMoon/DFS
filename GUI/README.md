@@ -6,7 +6,7 @@ If **you** didn't read the *CLI* version of *DFS*, make **sure** to read it. Oth
 2. [Building](#building)
 
     2.1 [Extracting](#extracting)
-    
+
     2.2 [Menuconfig](#menuconfig)
 
 ## Dependencies
@@ -29,11 +29,8 @@ Now, we need to extract the kernel, because it's a *`.tar.xz`* archive. (*`tar x
 
 ### Menuconfig
 
-now go to the kernels foldder and make a menuconfig
-```
-cd linux-6.10
-make menuconfig
-```
+Now go to the *kernel* folder (*`linux-6.10`*), and create a *`menuconfig`*. (*`make menuconfig`*)
+
 now select `Device Drivers > Graphic support > Cirrus drivers` enable it then enable `Frame buffer devices > support for frame buffer devices` go back to graphic support and select `bootup logo`
 then enable mouseedev search with `/`  and select 1 then enable `mousedev` then exit and save
 then run `make -j <amount of cores you hvae>` this allows you to make and compile it like for example

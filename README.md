@@ -9,9 +9,10 @@ This project allows you to create **your own** distribution of *[Linux](https://
 5. [bZimage](#bzimage)
 6. [BusyBox](#busybox)
 7. [Initramfs](#initramfs)
+8. [Bootfile](#bootfile)
 
 ## Dependencies
-In order to start, make sure you have any *[Linux](https://www.linux.org/)* distribution installed. Then, in the *terminal*, type this command:
+In order to start, make sure you have any *[Linux](https://www.linux.org/)* distribution (preferably [Debian](https://www.debian.org/)) installed. Then, in the *terminal*, type this command:
 ```
 sudo apt get install bzip2 git make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools
 ```
@@ -93,56 +94,48 @@ After *you've* created the directory, run this command:
 
 Now move to the *`initramfs`* directory (*`cd /boot-files/initramfs/`*), *and* create a new *file* called *`init`*. (*`nano init`*)
 
-now add these commands to `init`
+When you're in the `nano` editor (inside the *file*, of course), write this in the file:
 ```
 #!/bin/sh
 
 /bin/sh
 ```
-now save it
-now delete `linuxrc` no need for that file
-```
-rm linuxrc
-```
-now add exec permessions to init
-```
-chmod +x init
-```
-now find then pack it to a `.cpio` archive
-```
-find . | cpio -o -H newc > ../init.cpio
-```
-`-o` means create a new archive now go 1 dir back
-```
-cd ..
-```
-now the file has been created use `ls` to see it, but we will use a bootloader called `syslinux` 
-make the bootfile
-```
-dd if=/dev/zero of=boot bs=1M count=50
-```
-this will make a file that is 50-100 megabytes and it will filled with zeros
-we will use the `fat` filesystem
-```
-mkfs -t fat boot 
-```
-then run
-```
-syslinux boot
-```
-now make a directory called anything but for safety we will use `m` then mount boot to m
+, and save it. *Now*, delete the *`linuxrc`* file, there is absolutely **no need** for it. (*`rm linuxrc`*)
+
+After you did that, add *execution* permissions to the *`init`* file. (*`chmod +x init`*)
+
+Now do *`find`*, and pack it into a *`.cpio`* archive. (*`find . | cpio -o -H newc > ../init.cpio`*)
+
+### Explanation
+
+*`-o`* means creating a new archive
+
+----
+
+Now go 1 directory back (*`cd ..`*). The file is created, you can use *`ls`* to see it, but *we* will use a *bootloader* called *`syslinux`*.
+
+## Bootfile
+
+Now, make the bootfile. *`dd if=/dev/zero of=boot bs=1M count=50`*
+
+### Explanation
+
+This *command* will create a file that is around *50-100 MB*, and it will be filled with zeros. (*/dev/zero*)
+
+----
+
+After you typed in the command, use the *`FAT`* filesystem (*`mkfs -t fat boot`*), and then run *`syslinux boot`* .
+
+Now make a directory (*no matter the name, but we will use `m` for safety*) called *`m`*, and then *mount* the *boot* to *`m`*.
 ```
 mkdir m
 mount boot m
 ```
-then copy the kernel and initramfs to the `boot` fs
-```
-cp bzImage init.cpio m
-```
-now unmount it
-```
-unmount m
-```
+
+After you created the *`m`* directory, copy the *kernel* and *initramfs* to the *`boot`* filesystem. (*`cp bzImage init.cpio m`*)
+
+Then, *unmount* it. (*`unmount m`*)
+
 now the boot image is ready so we will boot it up
 ```
 qemu-system-x86_64 boot

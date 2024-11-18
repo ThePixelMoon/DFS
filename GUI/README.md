@@ -31,55 +31,35 @@ Now, we need to extract the kernel, because it's a *`.tar.xz`* archive. (*`tar x
 
 Now go to the *kernel* folder (*`linux-6.10`*), and create a *`menuconfig`*. (*`make menuconfig`*)
 
-now select `Device Drivers > Graphic support > Cirrus drivers` enable it then enable `Frame buffer devices > support for frame buffer devices` go back to graphic support and select `bootup logo`
-then enable mouseedev search with `/`  and select 1 then enable `mousedev` then exit and save
-then run `make -j <amount of cores you hvae>` this allows you to make and compile it like for example
-```
-make -j 8
-```
-you will have a compiled kernel called `bzImage` but first make a directory called `/distro` 
-```
-mkdir /distro
-```
-then copy the bzimage to the /distro directory
-```
-cp arch/x86/boot/bzImage /distro
-```
-then we will use busybox to make the distro it is a userspace
-```
-wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2
-```
-now extract
-```
-tar xf busybox-1.36.1.tar.bz2
-```
-now enter the directory
-```
-cd busybox-1.36.1
-```
-then make a menu config
-```
-make menuconfig
-```
-now make it compile statically not dynamically `settings > build static library (No shared libs) (NEW) `then exit and save
-now compile it with `make -j <amount of cores>` for example
-```
-make -j 8
-```
-then make a config prefix to where it should install busybox
-```
-make CONFIG_PREFIX=/distro install
-```
-we finsihed busybox now continue with the distro
-now we need to use a wm but for this tutorial we will be using Nano-X/Microwindows if you remember we enabled frame buffer support that is why we did that
-```
-git clone https://github.com/ghaerr/microwindows.git
-cd microwindows
-```
-navigate to the `src/` folder
-```
-cd src/
-```
+In the *`menuconfig`*, enable these:
+
+`Device Drivers > Graphic Support > Cirrus Drivers`
+
+`Frame Buffer Devices > Support for frame buffer devices`
+
+Now, go back to *Graphic Support* and select *Bootup Logo*. After that, enable *`mousedev`*. (search with `/`)
+
+**Exit, and save.**
+
+After doing the `menuconfig`, if you have more than *6 cores* on your *CPU* you can make it build with more than *6 cores* by writing this command in your *terminal*.
+
+*`make -j (AMOUNT OF CPU CORES YOU HAVE AS A INTEGER)`*
+
+## bZimage, BusyBox
+
+Do the same thing you did in the *CLI DFS*, because there's no difference.
+
+## Nano-X/Microwindows
+> Microwindows or the Nano-X Window System
+
+Now *we* need to use a *virtual machine*. We'll be using the *Nano-X/Microwindows*. If you remember why we enabled the *frame buffer support*, this is why.
+
+Get `Nano-X/Microwindows` using `git`. (*`git clone https://github.com/ghaerr/microwindows.git`*)
+
+Navigate to the `microwindows` directory. (*`cd microwindows/`*)
+
+Then, navigate to the `src/` directory. (*`cd src/`*)
+
 we will build it with the Linux Hardware buffer config
 ```
 cp Configs/config.linux-fb config
